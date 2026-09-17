@@ -5,7 +5,7 @@ export const checkFacilityAccess = async (req, res, next) => {
     const { userId, facility } = req.body;
 
     try {
-        // שליפת המשתמש יחד עם נתוני המנוי שלו
+ 
         const user = await User.findByPk(userId, {
             include: Subscription
         });
@@ -18,16 +18,16 @@ export const checkFacilityAccess = async (req, res, next) => {
             return res.status(403).json({ error: "User has no active subscription." });
         }
 
-        const allowed = user.Subscription.allowedFacilities; // לדוגמה: 'Gym', 'Pool', או 'All'
+        const allowed = user.Subscription.allowedFacilities;  
 
-        // בדיקה האם יש הרשאה למתקן המבוקש
+ 
         if (allowed !== 'All' && allowed !== facility) {
             return res.status(403).json({
                 error: `Access Denied: Your subscription (${user.Subscription.name}) does not allow entry to the ${facility}.`
             });
         }
 
-        next(); // מעבר לשלב הרישום
+        next();  
     } catch (error) {
         next(error);
     }

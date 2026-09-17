@@ -2,7 +2,7 @@ import Subscription from '../models/subscriptionModel.js';
 import User from '../models/userModel.js';
 import Entry from '../models/entryModel.js';
 
-// יצירת סוג מנוי חדש
+ 
 export const createSubscription = async (req, res, next) => {
     try {
         const { name, price, duration, allowedFacilities } = req.body;
@@ -18,7 +18,7 @@ export const createSubscription = async (req, res, next) => {
     }
 };
 
-// שליפת כל סוגי המנויים
+ 
 export const getAllSubscriptions = async (req, res, next) => {
     try {
         const subscriptions = await Subscription.findAll({ include: User });
@@ -28,7 +28,7 @@ export const getAllSubscriptions = async (req, res, next) => {
     }
 };
 
-// דוח מנהלים וסטטיסטיקות (הכנסות ופעילות)
+ 
 export const getStats = async (req, res, next) => {
     try {
         const totalUsers = await User.count();

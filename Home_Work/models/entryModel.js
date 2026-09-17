@@ -17,8 +17,7 @@ const Entry = sequelize.define('Entry', {
         defaultValue: DataTypes.NOW
     }
 });
-
-// קשרי גומלין (Associations)
+ 
 User.hasMany(Entry, { foreignKey: 'userId' });
 Entry.belongsTo(User, { foreignKey: 'userId' });
 

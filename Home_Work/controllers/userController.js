@@ -4,7 +4,7 @@ import User from '../models/userModel.js';
 import Subscription from '../models/subscriptionModel.js';
 import Entry from '../models/entryModel.js';
 
-// יצירת משתמש חדש (הרשמה)
+ 
 export const registerUser = async (req, res, next) => {
     try {
         const { fullName, email, password, subscriptionTypeId } = req.body;
@@ -29,7 +29,7 @@ export const registerUser = async (req, res, next) => {
     }
 };
 
-// התחברות והנפקת טוקן JWT
+ 
 export const loginUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -59,7 +59,7 @@ export const loginUser = async (req, res, next) => {
     }
 };
 
-// שליפת היסטוריית כניסות למשתמש ספציפי
+ 
 export const getUserEntries = async (req, res, next) => {
     try {
         const user = await User.findByPk(req.params.id, {
@@ -76,7 +76,7 @@ export const getUserEntries = async (req, res, next) => {
     }
 };
 
-// מחיקת משתמש
+ 
 export const deleteUser = async (req, res, next) => {
     try {
         const deleted = await User.destroy({ where: { id: req.params.id } });

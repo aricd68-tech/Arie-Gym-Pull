@@ -28,7 +28,7 @@ const User = sequelize.define('User', {
     }
 });
 
-// קשרי גומלין (Associations)
+ 
 Subscription.hasMany(User, { foreignKey: 'subscriptionTypeId' });
 User.belongsTo(Subscription, { foreignKey: 'subscriptionTypeId' });
 
